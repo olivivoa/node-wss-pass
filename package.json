@@ -1,0 +1,23 @@
+{
+  "name": "fastify",
+  "version": "0.1.0",
+  "description": "A simple Node app built on fastify, instantly up and running.",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@fastify/http-proxy": "^9.3.0",
+    "@fastify/websocket": "^8.3.1",
+    "axios": "^1.6.5",
+    "compressing": "^1.10.0",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.25.2",
+    "ws": "^8.16.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT"
+}
