@@ -22,7 +22,7 @@ jobs:
           if grep -q "Last deployment time:" README.md; then
             sed -i "/Last deployment time:/c\Last deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')" README.md
           else
-            echo "Last deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')" >> README.md
+            echo -e "\nLast deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')\n" >> README.md
           fi
 
       - name: Git Auto Commit
