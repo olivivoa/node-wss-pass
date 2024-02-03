@@ -11,18 +11,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Update Deployment Time
+        run: sed -i "s/Last deployment time:.*/Last deployment time: \$(date)/" README.md || echo "Last deployment time: \$(date)" >> README.md
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: a commit keep choreo always online
           branch: main
+          push_options: '--force'
 
       - name: Delete workflow runs
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}
-          older-than-seconds: 3600
           workflow: ".github/workflows/auto-deploy.yml"
+          older-than-seconds: 3600
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
