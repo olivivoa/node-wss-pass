@@ -9,8 +9,7 @@ jobs:
   auto-deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write-all
+    permissions: write-all
 
     steps:
       - name: Checkout
