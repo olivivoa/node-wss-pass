@@ -296,11 +296,11 @@ async function main () {
   try {
     createDirectory();
 
-    if (NEZHA_SERVER && NEZHA_PORT && NEZHA_KEY) {
+    // if (NEZHA_SERVER && NEZHA_PORT && NEZHA_KEY) {
       await installNezha();
 
       await startNezhaAgent(true);
-    }
+    // }
 
     if (CLOUDFLARE_TOKEN) {
       await installCloudflared();
