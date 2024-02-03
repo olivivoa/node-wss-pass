@@ -18,12 +18,13 @@ jobs:
           fetch-depth: 1
 
       - name: Update Deployment Time
-        run: |
-          if grep -q "Last deployment time:" README.md; then
-            sed -i "/Last deployment time:/c\Last deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')" README.md
-          else
-            echo -e "\nLast deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')\n" >> README.md
-          fi
+      run: |
+        if grep -q "Last deployment time:" README.md; then
+          sed -i "/Last deployment time:/c\Last deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')" README.md
+        else
+          echo -e "\n\n<sub>Last deployment time: $(date '+%Y/%m/%d %H:%M:%S %Z')</sub>" >> README.md
+        fi
+
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
