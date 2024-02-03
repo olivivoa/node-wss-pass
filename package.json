@@ -1,5 +1,5 @@
 {
-  "name": "fastify",
+  "name": "anl-pass",
   "version": "0.1.0",
   "description": "A simple Node app built on fastify, instantly up and running.",
   "main": "server.js",
