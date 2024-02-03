@@ -1,0 +1,28 @@
+name: Auto-Deploy
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
+
+jobs:
+  auto-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: a commit keep choreo always online
+          branch: main
+
+      - name: Delete workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        with:
+          repository: ${{ github.repository }}
+          older-than-seconds: 3600
+          workflow: ".github/workflows/auto-deploy.yml"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
