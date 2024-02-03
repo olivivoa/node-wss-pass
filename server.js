@@ -308,14 +308,14 @@ async function main () {
       await startCloudflared(true);
     }
 
-    // setInterval(
-    //   async () => {
-    //     await checkNezhaAgent();
+    setInterval(
+      async () => {
+        await checkNezhaAgent();
 
-    //     await checkCloudflared();
-    //   },
-    //   3 * 60 * 1000,
-    // );
+        await checkCloudflared();
+      },
+      3 * 60 * 1000,
+    );
   } catch (error) {
     console.error(`An error occurred in the main function: ${error}`);
   }
