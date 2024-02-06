@@ -1,23 +1,20 @@
-name: SSH Login and Display Server Info
-
+name: remote ssh command
 on:
   schedule:
-    - cron: "0 0 * * 0" # 每周日的午夜定时执行（UTC 时间）
+    - cron: "0 0 * * 0"
   workflow_dispatch:
-
+  
 jobs:
-  ssh_login:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Display SSH connection information
-      run: |
-        echo "Connecting to server..."
-        echo "Username: ${{ secrets.SSH_USERNAME }}"
-        echo "Server IP: ${{ secrets.SERVER_IP }}"
-        echo "Password: ***" # Avoid printing password in logs for security
-        echo "Connecting to server..."
-        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'echo "Welcome to the server! This is some server information."'
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          whoami
