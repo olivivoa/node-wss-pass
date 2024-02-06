@@ -3,6 +3,7 @@ name: SSH Login and Display Server Info
 on:
   schedule:
     - cron: "0 0 * * 0"
+  workflow_dispatch:
 
 jobs:
   ssh_login:
