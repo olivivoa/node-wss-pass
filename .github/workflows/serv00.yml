@@ -2,7 +2,7 @@ name: SSH Login and Display Server Info
 
 on:
   schedule:
-    - cron: "0 0 * * 0"
+    - cron: "0 0 * * 0" # 每周日的午夜定时执行（UTC 时间）
   workflow_dispatch:
 
 jobs:
@@ -13,5 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: SSH into server and display info
-      run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'echo "Welcome to the server! This is some server information."'
+    - name: Display SSH connection information
+      run: |
+        echo "Connecting to server..."
+        echo "Username: ${{ secrets.SSH_USERNAME }}"
+        echo "Server IP: ${{ secrets.SERVER_IP }}"
+        echo "Password: ***" # Avoid printing password in logs for security
+        echo "Connecting to server..."
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'echo "Welcome to the server! This is some server information."'
