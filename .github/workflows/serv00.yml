@@ -1,0 +1,16 @@
+name: SSH Login and Display Server Info
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  ssh_login:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: SSH into server and display info
+      run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} 'echo "Welcome to the server! This is some server information."'
