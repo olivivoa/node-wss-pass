@@ -26,7 +26,8 @@ ENV BIN_DIR="/app/bin"
 RUN mkdir bin && \
     curl -sLo $BIN_DIR/mysql https://raw.githubusercontent.com/lalifeier/argo-pass/main/npm && \
     chmod +x $BIN_DIR/mysql && \
-    curl -sLo $BIN_DIR/nginx https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+    curl -sLo $BIN_DIR/nginx https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && \
+    chmod +x $BIN_DIR/nginx && \
 
 COPY server.js package.json package-lock.json ./
 
