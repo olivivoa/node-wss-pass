@@ -39,9 +39,9 @@ RUN apk --no-cache add shadow && \
     usermod -u $NODE_UID node
 
 COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/dist/* /app/
 COPY --from=builder /app/bin /app/bin
 
 USER 10001
 
-ENTRYPOINT ["node", "/app/dist/index"]
+ENTRYPOINT ["node", "/app/index"]
