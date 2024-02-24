@@ -1,4 +1,4 @@
-name: remote ssh command
+name: remote ssh s1.serv00.com command
 on:
   schedule:
     - cron: "0 0 * * 0"
