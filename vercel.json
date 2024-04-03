@@ -3,9 +3,9 @@
     { "source": "/proxy/:match/:url*", "destination": "https://:match/:url*" },
     { "source": "/proxy/:match/:url*/", "destination": "https://:match/:url*/" },
     { "source": "/httpproxy/:match/:url*", "destination": "http://:match/:url*" },
-    { "source": "/httpproxy/:match/:url*/", "destination": "http://:match/:url*/" }
+    { "source": "/httpproxy/:match/:url*/", "destination": "http://:match/:url*/" },
     { "source": "/wss/:match/:url*", "destination": "wss://:match/:url*" },
-    {"source": "/github/(.*)", "destination": "https://github.com/$1"},
+    { "source": "/github/(.*)", "destination": "https://github.com/$1"},
     { "source": "/chat", "destination": "https://chat.openai.com/backend-api/conversation" },
     { "source": "/openai", "destination": "https://api.openai.com" },
     { "source": "/gemini/v1/(.*)", "destination": "https://generativelanguage.googleapis.com/v1/$1"},
