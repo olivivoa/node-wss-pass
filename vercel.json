@@ -1,5 +1,9 @@
 {
   "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/serverless.js"
+    },
     { "source": "/proxy/:match/:url*", "destination": "https://:match/:url*" },
     { "source": "/proxy/:match/:url*/", "destination": "https://:match/:url*/" },
     { "source": "/httpproxy/:match/:url*", "destination": "http://:match/:url*" },
