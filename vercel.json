@@ -1,17 +1,6 @@
-  {
-    "version": 2,
-    "regions": ["sin1"],
-    "functions": {
-      "api/serverless.js": { "maxDuration": 300 }
-    },
-    "rewrites": [
-      { "source": "/github/:path*", "destination": "https://github.com/:path*" },
-      { "source": "/gemini/v1/:path*", "destination": "https://generativelanguage.googleapis.com/v1/:path*" },
-      { "source": "/gemini/v1beta/:path*", "destination": "https://generativelanguage.googleapis.com/v1beta/:path*" },
-      { "source": "/openai/:path*", "destination": "https://api.openai.com/:path*" },
-      { "source": "/proxy/:match/:url*", "destination": "https://:match/:url*" },
-      { "source": "/httpproxy/:match/:url*", "destination": "http://:match/:url*" },
-      { "source": "/wss/:match/:url*", "destination": "wss://:match/:url*" },
-      { "source": "/:path*", "destination": "/api/serverless.js" }
-    ]
-  }
+{
+  "version": 2,
+  "regions": ["sin1"],
+  "builds": [{ "src": "api/serverless.js", "use": "@vercel/node", "config": { "maxDuration": 300} }],
+  "routes": [{ "src": "/(.*)", "dest": "api/serverless.js" }]
+}
