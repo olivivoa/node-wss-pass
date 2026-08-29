@@ -1,9 +1,5 @@
-import init from '../dist';
+const init = require('../server');
 
-export default async (req, res) => {
-  const app = init();
+const app = init();
 
-  await app.ready();
-
-  app.server.emit('request', req, res);
-};
+app.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
